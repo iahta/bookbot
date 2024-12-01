@@ -5,8 +5,11 @@ def main():
     count_words = word_count(text)
     character_dict = character_count(text)
     #print(count_words)
-    list_of_dict = character_list(character_dict)
+    list_of_dict = character_list(character_dict)  
     print(list_of_dict)
+    sorted_list = report_characters(list_of_dict)
+    print(sorted_list)
+
 
 def get_book_text(path):
     with open(path) as f:
@@ -17,7 +20,7 @@ def word_count(text):
     return len(words)
 
 def character_count(text):
-    lowered_string = re.sub("[^a-zA-Z]"," ", text.lower())
+    lowered_string = re.sub("[^a-zA-Z]","", text.lower())
     count = {}
     for character in (lowered_string):
         if character not in count:
@@ -29,15 +32,19 @@ def character_count(text):
 def character_list(dict):
     list_of_characters = []
     for character, num in dict.items():
-          list_of_characters.append({character:num})
+        char_num_dict = {}
+        char_num_dict["character"] = character
+        char_num_dict["num"] = num 
+        list_of_characters.append(char_num_dict)
     return list_of_characters
 
 
-def sort_on(character_dict):
-     return character_dict["num"]
+def sort_on(dict):
+     return dict["num"]
 
-def report_characters(count_words, character_dict):
-     character_dict.sort(reverse=True, key=sort_on)
+def report_characters(list_of_dict):
+    list_of_dict.sort(reverse=True, key=sort_on)
+    return list_of_dict
 
 
 
