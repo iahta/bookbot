@@ -6,7 +6,6 @@ def main():
     character_dict = character_count(text)
     list_of_dict = character_list(character_dict)  
     sorted_list = sort_characters(list_of_dict)
-    print(sorted_list)
     book_report(count_words, sorted_list )
 
 
@@ -30,7 +29,7 @@ def character_count(text):
 
 def character_list(dict):
     list_of_characters = []
-    for character, num in dict.items():
+    for character, num in dict.items(): 
         char_num_dict = {}
         char_num_dict["character"] = character
         char_num_dict["num"] = num 
